@@ -10,6 +10,9 @@
             margin: 0;
             padding: 0;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.5;
@@ -18,6 +21,25 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 1.5rem 1rem;
+        }
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 0 6px 6px;
+            z-index: 100;
+            text-decoration: none;
+            font-weight: 600;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid #1d4ed8;
+            outline-offset: 2px;
         }
         header {
             text-align: center;
@@ -80,10 +102,16 @@
         }
         .check-item input[type="checkbox"] {
             flex-shrink: 0;
-            width: 1rem;
-            height: 1rem;
-            margin-top: 0.15rem;
+            width: 1.125rem;
+            height: 1.125rem;
+            margin-top: 0.1rem;
             accent-color: #2563eb;
+            cursor: pointer;
+        }
+        .check-item input[type="checkbox"]:focus {
+            outline: 3px solid #93c5fd;
+            outline-offset: 2px;
+            border-radius: 2px;
         }
         .check-item label {
             cursor: pointer;
@@ -129,8 +157,32 @@
         .back-link:hover {
             text-decoration: underline;
         }
+        .back-link:focus {
+            outline: 3px solid #93c5fd;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+        .clear-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .clear-btn:hover {
+            background: #b91c1c;
+        }
+        .clear-btn:focus {
+            outline: 3px solid #fca5a5;
+            outline-offset: 2px;
+        }
         @media print {
-            .back-link {
+            .back-link, .clear-btn {
                 display: none;
             }
             body {
@@ -146,106 +198,171 @@
             .golden-rule strong, .golden-rule p {
                 color: #333;
             }
+            .skip-link {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <a href="index.html" class="back-link">← Back to Manual</a>
 
-    <header>
-        <h1>AI Output Verification Checklist</h1>
-        <p class="subtitle">Print this page. Keep it nearby when using AI.</p>
-        <p class="publisher">Asdale Dynamics, LLC</p>
-    </header>
+    <main id="main-content">
+        <header>
+            <h1>AI Output Verification Checklist</h1>
+            <p class="subtitle">Print this page. Keep it nearby when using AI.</p>
+            <p class="publisher">Asdale Dynamics, LLC</p>
+        </header>
 
-    <div class="golden-rule">
-        <strong>The Golden Rule</strong>
-        <p>Never treat AI as an authority on health, law, or money.</p>
-    </div>
+        <div class="golden-rule" role="alert">
+            <strong>The Golden Rule</strong>
+            <p>Never treat AI as an authority on health, law, or money.</p>
+        </div>
 
-    <div class="section">
-        <h2>Before You Trust an AI Answer</h2>
-        <ul>
-            <li class="check-item"><input type="checkbox" id="q1"><label for="q1">I remember: <strong>AI is not an authority on health, law, or money</strong></label></li>
-            <li class="check-item"><input type="checkbox" id="q2"><label for="q2">I read the full answer slowly, not just skimmed it</label></li>
-            <li class="check-item"><input type="checkbox" id="q3"><label for="q3">I circled/flagged every specific claim (names, dates, numbers, quotes, studies)</label></li>
-            <li class="check-item"><input type="checkbox" id="q4"><label for="q4">I asked: "How would I verify each flagged claim?"</label></li>
-        </ul>
-    </div>
+        <div class="section" aria-labelledby="before-trust-heading">
+            <h2 id="before-trust-heading">Before You Trust an AI Answer</h2>
+            <ul>
+                <li class="check-item"><input type="checkbox" id="q1" name="q1"><label for="q1">I remember: <strong>AI is not an authority on health, law, or money</strong></label></li>
+                <li class="check-item"><input type="checkbox" id="q2" name="q2"><label for="q2">I read the full answer slowly, not just skimmed it</label></li>
+                <li class="check-item"><input type="checkbox" id="q3" name="q3"><label for="q3">I circled/flagged every specific claim (names, dates, numbers, quotes, studies)</label></li>
+                <li class="check-item"><input type="checkbox" id="q4" name="q4"><label for="q4">I asked: "How would I verify each flagged claim?"</label></li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>Verifying Each Claim</h2>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">For <strong>each</strong> flagged claim:</p>
-        <ul>
-            <li class="check-item"><input type="checkbox" id="v1"><label for="v1">I searched for it independently (browser, not AI)</label></li>
-            <li class="check-item"><input type="checkbox" id="v2"><label for="v2">I found the original source (not a summary)</label></li>
-            <li class="check-item"><input type="checkbox" id="v3"><label for="v3">The source is current (check the date)</label></li>
-            <li class="check-item"><input type="checkbox" id="v4"><label for="v4">The author/source is qualified on this topic</label></li>
-            <li class="check-item"><input type="checkbox" id="v5"><label for="v5">Other independent sources agree</label></li>
-            <li class="check-item"><input type="checkbox" id="v6"><label for="v6">No obvious conflict of interest</label></li>
-            <li class="check-item"><input type="checkbox" id="v7"><label for="v7">I noted: ✅ Verified &nbsp;|&nbsp; ❌ False &nbsp;|&nbsp; ⚠️ Unverifiable &nbsp;|&nbsp; ⚡ Contradicted</label></li>
-        </ul>
-    </div>
+        <div class="section" aria-labelledby="verifying-heading">
+            <h2 id="verifying-heading">Verifying Each Claim</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">For <strong>each</strong> flagged claim:</p>
+            <ul>
+                <li class="check-item"><input type="checkbox" id="v1" name="v1"><label for="v1">I searched for it independently (browser, not AI)</label></li>
+                <li class="check-item"><input type="checkbox" id="v2" name="v2"><label for="v2">I found the original source (not a summary)</label></li>
+                <li class="check-item"><input type="checkbox" id="v3" name="v3"><label for="v3">The source is current (check the date)</label></li>
+                <li class="check-item"><input type="checkbox" id="v4" name="v4"><label for="v4">The author/source is qualified on this topic</label></li>
+                <li class="check-item"><input type="checkbox" id="v5" name="v5"><label for="v5">Other independent sources agree</label></li>
+                <li class="check-item"><input type="checkbox" id="v6" name="v6"><label for="v6">No obvious conflict of interest</label></li>
+                <li class="check-item"><input type="checkbox" id="v7" name="v7"><label for="v7">I noted: ✅ Verified &nbsp;|&nbsp; ❌ False &nbsp;|&nbsp; ⚠️ Unverifiable &nbsp;|&nbsp; ⚡ Contradicted</label></li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>Cross-Checking with Other AIs</h2>
-        <ul>
-            <li class="check-item"><input type="checkbox" id="c1"><label for="c1">I asked 2+ different AIs the same question</label></li>
-            <li class="check-item"><input type="checkbox" id="c2"><label for="c2">I compared their core claims side by side</label></li>
-            <li class="check-item"><input type="checkbox" id="c3"><label for="c3">I flagged any disagreements</label></li>
-            <li class="check-item"><input type="checkbox" id="c4"><label for="c4">I verified disputed claims against non-AI sources</label></li>
-        </ul>
-    </div>
+        <div class="section" aria-labelledby="cross-check-heading">
+            <h2 id="cross-check-heading">Cross-Checking with Other AIs</h2>
+            <ul>
+                <li class="check-item"><input type="checkbox" id="c1" name="c1"><label for="c1">I asked 2+ different AIs the same question</label></li>
+                <li class="check-item"><input type="checkbox" id="c2" name="c2"><label for="c2">I compared their core claims side by side</label></li>
+                <li class="check-item"><input type="checkbox" id="c3" name="c3"><label for="c3">I flagged any disagreements</label></li>
+                <li class="check-item"><input type="checkbox" id="c4" name="c4"><label for="c4">I verified disputed claims against non-AI sources</label></li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>Citing AI Output Honestly</h2>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">If using AI output in your work:</p>
-        <ul>
-            <li class="check-item"><input type="checkbox" id="ci1"><label for="ci1">I named the AI tool and date</label></li>
-            <li class="check-item"><input type="checkbox" id="ci2"><label for="ci2">I included the prompt (or summary)</label></li>
-            <li class="check-item"><input type="checkbox" id="ci3"><label for="ci3">I marked each claim: verified / unverified / contradicted</label></li>
-            <li class="check-item"><input type="checkbox" id="ci4"><label for="ci4">I did NOT cite AI as a primary source</label></li>
-        </ul>
-    </div>
+        <div class="section" aria-labelledby="citing-heading">
+            <h2 id="citing-heading">Citing AI Output Honestly</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">If using AI output in your work:</p>
+            <ul>
+                <li class="check-item"><input type="checkbox" id="ci1" name="ci1"><label for="ci1">I named the AI tool and date</label></li>
+                <li class="check-item"><input type="checkbox" id="ci2" name="ci2"><label for="ci2">I included the prompt (or summary)</label></li>
+                <li class="check-item"><input type="checkbox" id="ci3" name="ci3"><label for="ci3">I marked each claim: verified / unverified / contradicted</label></li>
+                <li class="check-item"><input type="checkbox" id="ci4" name="ci4"><label for="ci4">I did NOT cite AI as a primary source</label></li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>Red Flags — Stop and Investigate</h2>
-        <ul>
-            <li class="check-item"><input type="checkbox" id="r1"><label for="r1">AI cites a study/paper that doesn't exist in search</label></li>
-            <li class="check-item"><input type="checkbox" id="r2"><label for="r2">AI gives a specific quote you can't find anywhere</label></li>
-            <li class="check-item"><input type="checkbox" id="r3"><label for="r3">AI states a statistic with no source</label></li>
-            <li class="check-item"><input type="checkbox" id="r4"><label for="r4">All AIs agree but no primary source exists</label></li>
-            <li class="check-item"><input type="checkbox" id="r5"><label for="r5">Claim sounds too perfect / too convenient</label></li>
-            <li class="check-item"><input type="checkbox" id="r6"><label for="r6">Source is a blog, forum, or social media only</label></li>
-            <li class="check-item"><input type="checkbox" id="r7"><label for="r7">Medical/legal/financial advice presented as fact</label></li>
-        </ul>
-    </div>
+        <div class="section" aria-labelledby="red-flags-heading">
+            <h2 id="red-flags-heading">Red Flags — Stop and Investigate</h2>
+            <ul>
+                <li class="check-item"><input type="checkbox" id="r1" name="r1"><label for="r1">AI cites a study/paper that doesn't exist in search</label></li>
+                <li class="check-item"><input type="checkbox" id="r2" name="r2"><label for="r2">AI gives a specific quote you can't find anywhere</label></li>
+                <li class="check-item"><input type="checkbox" id="r3" name="r3"><label for="r3">AI states a statistic with no source</label></li>
+                <li class="check-item"><input type="checkbox" id="r4" name="r4"><label for="r4">All AIs agree but no primary source exists</label></li>
+                <li class="check-item"><input type="checkbox" id="r5" name="r5"><label for="r5">Claim sounds too perfect / too convenient</label></li>
+                <li class="check-item"><input type="checkbox" id="r6" name="r6"><label for="r6">Source is a blog, forum, or social media only</label></li>
+                <li class="check-item"><input type="checkbox" id="r7" name="r7"><label for="r7">Medical/legal/financial advice presented as fact</label></li>
+            </ul>
+        </div>
 
-    <div class="section">
-        <h2>My Verification Log</h2>
-        <table class="log-table">
-            <thead>
-                <tr>
-                    <th style="width: 12%;">Date</th>
-                    <th style="width: 12%;">AI Tool</th>
-                    <th style="width: 20%;">Question</th>
-                    <th style="width: 20%;">Key Claim</th>
-                    <th style="width: 12%;">Verified?</th>
-                    <th style="width: 24%;">Source</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="section" aria-labelledby="log-heading">
+            <h2 id="log-heading">My Verification Log</h2>
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 12%;">Date</th>
+                        <th scope="col" style="width: 12%;">AI Tool</th>
+                        <th scope="col" style="width: 20%;">Question</th>
+                        <th scope="col" style="width: 20%;">Key Claim</th>
+                        <th scope="col" style="width: 12%;">Verified?</th>
+                        <th scope="col" style="width: 24%;">Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button type="button" class="clear-btn" id="clear-btn" aria-label="Clear all checkboxes">Clear All Checkboxes</button>
+    </main>
 
     <footer>
         <p>&copy; 2026 Asdale Dynamics, LLC — Free to copy and share for personal use.</p>
     </footer>
+
+    <script>
+        (function() {
+            const STORAGE_KEY = 'ai-verification-checklist';
+            const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+            const clearBtn = document.getElementById('clear-btn');
+
+            // Load saved state from localStorage
+            function loadState() {
+                try {
+                    const saved = localStorage.getItem(STORAGE_KEY);
+                    if (saved) {
+                        const state = JSON.parse(saved);
+                        checkboxes.forEach(cb => {
+                            if (state[cb.id] !== undefined) {
+                                cb.checked = state[cb.id];
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.warn('Could not load checklist state:', e);
+                }
+            }
+
+            // Save state to localStorage
+            function saveState() {
+                try {
+                    const state = {};
+                    checkboxes.forEach(cb => {
+                        state[cb.id] = cb.checked;
+                    });
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+                } catch (e) {
+                    console.warn('Could not save checklist state:', e);
+                }
+            }
+
+            // Clear all checkboxes
+            function clearAll() {
+                checkboxes.forEach(cb => {
+                    cb.checked = false;
+                });
+                saveState();
+            }
+
+            // Event listeners
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', saveState);
+            });
+
+            clearBtn.addEventListener('click', clearAll);
+
+            // Initialize
+            loadState();
+        })();
+    </script>
 </body>
 </html>
