@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifying AI Outputs: A Beginner's Manual | Asdale Dynamics, LLC</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fafafa;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 1.125rem;
+            color: #4a4a6a;
+            font-style: italic;
+        }
+        .publisher {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 500;
+        }
+        .golden-rule {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .golden-rule strong {
+            font-size: 1.125rem;
+            color: #856404;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .golden-rule p {
+            color: #856404;
+            font-weight: 500;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2d2d44;
+            margin: 1.5rem 0 0.75rem;
+        }
+        p {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        tr:nth-child(even) td {
+            background: #fafafa;
+        }
+        .step-box {
+            background: #f0f7ff;
+            border-left: 4px solid #2563eb;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .step-box strong {
+            color: #1e40af;
+        }
+        .red-flags {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .red-flags strong {
+            color: #991b1b;
+        }
+        .quick-ref {
+            background: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quick-ref strong {
+            color: #15803d;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .checklist-link {
+            display: inline-block;
+            margin: 1.5rem 0;
+            padding: 0.75rem 1.5rem;
+            background: #2563eb;
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .checklist-link:hover {
+            background: #1d4ed8;
+            text-decoration: none;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                max-width: 100%;
+            }
+            .checklist-link {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verifying AI Outputs: A Beginner's Manual</h1>
+        <p class="subtitle">Spotting hallucinations, checking sources, comparing answers, and citing facts — in plain English</p>
+        <p class="publisher">Published by Asdale Dynamics, LLC</p>
+    </header>
+
+    <div class="golden-rule">
+        <strong>The Golden Rule</strong>
+        <p>Never treat AI as an authority on health, law, or money.</p>
+    </div>
+
+    <section id="intro">
+        <h2>Welcome</h2>
+        <p>You've asked an AI a question. It gave you an answer that looks confident and well-written. But is it <em>true</em>?</p>
+        <p>This manual teaches you how to check. No technical background needed. Just a willingness to pause and verify.</p>
+    </section>
+
+    <section id="chapter1">
+        <h2>Chapter 1: Why AI Gets Things Wrong</h2>
+        <h3>What Is a Hallucination?</h3>
+        <p>When AI makes something up but sounds completely sure of itself, that's a <strong>hallucination</strong>. It's not lying on purpose. It's predicting what words should come next based on patterns — and sometimes those patterns lead to fiction.</p>
+        <p><strong>Common signs:</strong></p>
+        <ul>
+            <li>Specific-sounding details that don't exist (fake citations, made-up studies, invented quotes)</li>
+            <li>Confident tone with no hedging ("The study found..." vs "A study might have found...")</li>
+            <li>Internal contradictions within the same answer</li>
+            <li>Claims that sound plausible but can't be verified</li>
+        </ul>
+        <h3>Why It Happens</h3>
+        <p>AI models don't "know" facts. They predict likely word sequences. If the training data contains errors, the model learns those errors. If a question falls outside its training, it improvises.</p>
+    </section>
+
+    <section id="chapter2">
+        <h2>Chapter 2: Spotting Hallucinations — Step by Step</h2>
+        <div class="step-box">
+            <strong>Step 1: Read with Skepticism</strong>
+            <p>Don't skim. Read every claim as if you need to prove it to someone else.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 2: Flag Specific Claims</strong>
+            <p>Circle or highlight anything that sounds like a fact: names, dates, numbers, study results, statistics, quotes attributed to real people, legal or medical statements, product specifications.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 3: Ask "How Would I Check This?"</strong>
+            <p>For each flagged claim, imagine the simplest way to verify it: a name → search the person + claim; a study → search the title + journal; a statistic → search the number + source; a quote → search the exact phrase in quotes.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 4: Search Independently</strong>
+            <p>Open a browser. Don't ask the AI to check itself. Use a search engine or go directly to trusted sites.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 5: Compare Results</strong>
+            <p>If multiple independent sources agree, the claim is likely solid. If only the AI says it, treat it as unverified.</p>
+        </div>
+    </section>
+
+    <section id="chapter3">
+        <h2>Chapter 3: Checking Sources — Step by Step</h2>
+        <h3>What Makes a Source Trustworthy?</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>High Trust</th>
+                    <th>Medium Trust</th>
+                    <th>Low Trust</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Peer-reviewed journals</td>
+                    <td>Reputable news outlets</td>
+                    <td>Random blogs</td>
+                </tr>
+                <tr>
+                    <td>Government (.gov) sites</td>
+                    <td>Established industry publications</td>
+                    <td>Social media posts</td>
+                </tr>
+                <tr>
+                    <td>Academic institutions (.edu)</td>
+                    <td>Well-known company blogs</td>
+                    <td>Forum answers</td>
+                </tr>
+                <tr>
+                    <td>Major medical organizations</td>
+                    <td>Professional associations</td>
+                    <td>AI-generated content</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Step-by-Step Source Check</h3>
+        <ol>
+            <li><strong>Find the original source</strong> — Don't trust a summary. Click through to the actual study, law, or document.</li>
+            <li><strong>Check the date</strong> — Is it current? Medicine and law change fast.</li>
+            <li><strong>Check the author</strong> — Are they qualified? A cardiologist writing about heart disease? Yes. A cardiologist writing about tax law? No.</li>
+            <li><strong>Check for consensus</strong> — Do other experts agree? One study ≠ settled science.</li>
+            <li><strong>Watch for conflicts of interest</strong> — Who funded it? Who benefits?</li>
+        </ol>
+        <div class="red-flags">
+            <strong>Red Flags in Sources</strong>
+            <ul style="margin: 0.5rem 0 0 1.5rem;">
+                <li>No author listed</li>
+                <li>No date</li>
+                <li>No citations or references</li>
+                <li>Sensational headlines ("Shocking new study reveals...")</li>
+                <li>Selling something related to the claim</li>
+                <li>Only appears on one website</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="chapter4">
+        <h2>Chapter 4: Comparing Answers — Step by Step</h2>
+        <h3>Why Compare?</h3>
+        <p>Different AIs have different training data, different strengths, and different blind spots. Comparing catches errors any single AI might miss.</p>
+        <h3>How to Compare</h3>
+        <div class="step-box">
+            <strong>Step 1: Ask the same question to 2–3 different AIs</strong>
+            <p>Use different platforms (e.g., ChatGPT, Claude, Gemini, local models). Keep the prompt identical.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 2: Compare the core claims</strong>
+            <p>Do they agree on the basic facts? Do they cite the same sources? Do they express the same uncertainty?</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 3: Note disagreements</strong>
+            <p>If AIs disagree on a fact, <em>that fact is unverified</em>. Dig deeper on the disputed points. Don't average them — investigate.</p>
+        </div>
+        <div class="step-box">
+            <strong>Step 4: Check against non-AI sources</strong>
+            <p>The AIs might all be wrong in the same way. Always verify against primary sources.</p>
+        </div>
+        <h3>Quick Comparison Template</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Claim</th>
+                    <th>AI 1</th>
+                    <th>AI 2</th>
+                    <th>AI 3</th>
+                    <th>Verified?</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Example: "Vitamin D prevents colds"</td>
+                    <td>Yes, cites Study A</td>
+                    <td>No effect, cites Study B</td>
+                    <td>Mixed results</td>
+                    <td>❌ No</td>
+                    <td>Need to check studies</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="chapter5">
+        <h2>Chapter 5: Citing Facts — Step by Step</h2>
+        <h3>When You Use AI Output in Your Work</h3>
+        <p>If you include AI-generated information in a report, article, email, or presentation — cite it honestly.</p>
+        <h3>What to Include in a Citation</h3>
+        <ol>
+            <li>The AI tool used (name and version if known)</li>
+            <li>The date you asked</li>
+            <li>The exact prompt (or a summary)</li>
+            <li>The specific claim you're citing</li>
+            <li>Your verification status (verified / unverified / contradicted)</li>
+        </ol>
+        <h3>Citation Format Examples</h3>
+        <p><strong>For verified claims:</strong></p>
+        <blockquote style="background: #f5f5f5; padding: 1rem; border-left: 3px solid #2563eb; margin: 1rem 0; font-style: italic;">
+            "According to a 2023 CDC report (verified via CDC.gov), flu vaccination reduces risk by 40–60%. [Generated with ChatGPT-4, Oct 2024; verified independently]"
+        </blockquote>
+        <p><strong>For unverified claims:</strong></p>
+        <blockquote style="background: #f5f5f5; padding: 1rem; border-left: 3px solid #f59e0b; margin: 1rem 0; font-style: italic;">
+            "AI suggested that magnesium improves sleep quality. [Generated with Claude 3, Oct 2024; <em>not independently verified</em>]"
+        </blockquote>
+        <p><strong>For contradicted claims:</strong></p>
+        <blockquote style="background: #f5f5f5; padding: 1rem; border-left: 3px solid #dc2626; margin: 1rem 0; font-style: italic;">
+            "One AI claimed Study X found Y. Another AI cited Study X finding Z. [Generated with multiple AIs, Oct 2024; <em>sources contradict — do not cite as fact</em>]"
+        </blockquote>
+        <h3>In Academic or Professional Work</h3>
+        <p>Check your institution's policy. Many now require:</p>
+        <ul>
+            <li>Disclosure of AI use</li>
+            <li>Separation of AI-generated vs. human-verified content</li>
+            <li>No citing AI as a primary source</li>
+        </ul>
+    </section>
+
+    <section id="chapter6">
+        <h2>Chapter 6: Printable Checklist</h2>
+        <p>See <a href="checklist.html" class="checklist-link">Printable Checklist →</a> for a one-page printable version.</p>
+    </section>
+
+    <section id="quickref">
+        <h2>Quick Reference Card</h2>
+        <div class="quick-ref">
+            <table style="margin: 0; border: none;">
+                <thead>
+                    <tr style="border: none;">
+                        <th style="border: none; padding-right: 2rem;">Situation</th>
+                        <th style="border: none;">What to Do</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Medical question</td>
+                        <td style="border: none;">Ask AI for general info only. See a clinician.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Legal question</td>
+                        <td style="border: none;">Ask AI to explain concepts. Hire a lawyer.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Financial decision</td>
+                        <td style="border: none;">Ask AI to define terms. Consult a fiduciary advisor.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Coding help</td>
+                        <td style="border: none;">Test the code. Run it. Read the docs.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Historical fact</td>
+                        <td style="border: none;">Check Wikipedia + primary sources.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Current events</td>
+                        <td style="border: none;">Check multiple reputable news sites.</td>
+                    </tr>
+                    <tr style="border: none;">
+                        <td style="border: none; padding-right: 2rem;">Product specs</td>
+                        <td style="border: none;">Check manufacturer's official site.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="remember">
+        <h2>Remember</h2>
+        <ul>
+            <li>AI is a <strong>tool</strong>, not an oracle</li>
+            <li>Verification is a <strong>habit</strong>, not a one-time act</li>
+            <li>When in doubt, <strong>check it out</strong></li>
+            <li>Your judgment matters more than the AI's confidence</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Asdale Dynamics, LLC. This guide is provided for educational purposes only. It is not legal, medical, or financial advice.</p>
+    </footer>
+</body>
+</html>

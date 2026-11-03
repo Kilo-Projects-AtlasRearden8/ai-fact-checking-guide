@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Output Verification Checklist | Asdale Dynamics, LLC</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.5;
+            color: #1a1a2e;
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #333;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .publisher {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 500;
+        }
+        .golden-rule {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .golden-rule strong {
+            font-size: 1rem;
+            color: #856404;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .golden-rule p {
+            color: #856404;
+            font-weight: 500;
+            margin: 0;
+        }
+        h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #ddd;
+        }
+        ul {
+            margin: 0.5rem 0 0.75rem 1.25rem;
+        }
+        li {
+            margin-bottom: 0.35rem;
+            font-size: 0.95rem;
+        }
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .check-item input[type="checkbox"] {
+            flex-shrink: 0;
+            width: 1rem;
+            height: 1rem;
+            margin-top: 0.15rem;
+            accent-color: #2563eb;
+        }
+        .check-item label {
+            cursor: pointer;
+            line-height: 1.4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        .log-table th {
+            background: #333;
+            color: white;
+        }
+        .section {
+            margin-bottom: 1.5rem;
+        }
+        footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        @media print {
+            .back-link {
+                display: none;
+            }
+            body {
+                padding: 0.5rem;
+            }
+            header {
+                border-bottom: 2px solid #333;
+            }
+            .golden-rule {
+                border: 2px solid #333;
+                background: none;
+            }
+            .golden-rule strong, .golden-rule p {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Manual</a>
+
+    <header>
+        <h1>AI Output Verification Checklist</h1>
+        <p class="subtitle">Print this page. Keep it nearby when using AI.</p>
+        <p class="publisher">Asdale Dynamics, LLC</p>
+    </header>
+
+    <div class="golden-rule">
+        <strong>The Golden Rule</strong>
+        <p>Never treat AI as an authority on health, law, or money.</p>
+    </div>
+
+    <div class="section">
+        <h2>Before You Trust an AI Answer</h2>
+        <ul>
+            <li class="check-item"><input type="checkbox" id="q1"><label for="q1">I remember: <strong>AI is not an authority on health, law, or money</strong></label></li>
+            <li class="check-item"><input type="checkbox" id="q2"><label for="q2">I read the full answer slowly, not just skimmed it</label></li>
+            <li class="check-item"><input type="checkbox" id="q3"><label for="q3">I circled/flagged every specific claim (names, dates, numbers, quotes, studies)</label></li>
+            <li class="check-item"><input type="checkbox" id="q4"><label for="q4">I asked: "How would I verify each flagged claim?"</label></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Verifying Each Claim</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">For <strong>each</strong> flagged claim:</p>
+        <ul>
+            <li class="check-item"><input type="checkbox" id="v1"><label for="v1">I searched for it independently (browser, not AI)</label></li>
+            <li class="check-item"><input type="checkbox" id="v2"><label for="v2">I found the original source (not a summary)</label></li>
+            <li class="check-item"><input type="checkbox" id="v3"><label for="v3">The source is current (check the date)</label></li>
+            <li class="check-item"><input type="checkbox" id="v4"><label for="v4">The author/source is qualified on this topic</label></li>
+            <li class="check-item"><input type="checkbox" id="v5"><label for="v5">Other independent sources agree</label></li>
+            <li class="check-item"><input type="checkbox" id="v6"><label for="v6">No obvious conflict of interest</label></li>
+            <li class="check-item"><input type="checkbox" id="v7"><label for="v7">I noted: ✅ Verified &nbsp;|&nbsp; ❌ False &nbsp;|&nbsp; ⚠️ Unverifiable &nbsp;|&nbsp; ⚡ Contradicted</label></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Cross-Checking with Other AIs</h2>
+        <ul>
+            <li class="check-item"><input type="checkbox" id="c1"><label for="c1">I asked 2+ different AIs the same question</label></li>
+            <li class="check-item"><input type="checkbox" id="c2"><label for="c2">I compared their core claims side by side</label></li>
+            <li class="check-item"><input type="checkbox" id="c3"><label for="c3">I flagged any disagreements</label></li>
+            <li class="check-item"><input type="checkbox" id="c4"><label for="c4">I verified disputed claims against non-AI sources</label></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Citing AI Output Honestly</h2>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">If using AI output in your work:</p>
+        <ul>
+            <li class="check-item"><input type="checkbox" id="ci1"><label for="ci1">I named the AI tool and date</label></li>
+            <li class="check-item"><input type="checkbox" id="ci2"><label for="ci2">I included the prompt (or summary)</label></li>
+            <li class="check-item"><input type="checkbox" id="ci3"><label for="ci3">I marked each claim: verified / unverified / contradicted</label></li>
+            <li class="check-item"><input type="checkbox" id="ci4"><label for="ci4">I did NOT cite AI as a primary source</label></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Red Flags — Stop and Investigate</h2>
+        <ul>
+            <li class="check-item"><input type="checkbox" id="r1"><label for="r1">AI cites a study/paper that doesn't exist in search</label></li>
+            <li class="check-item"><input type="checkbox" id="r2"><label for="r2">AI gives a specific quote you can't find anywhere</label></li>
+            <li class="check-item"><input type="checkbox" id="r3"><label for="r3">AI states a statistic with no source</label></li>
+            <li class="check-item"><input type="checkbox" id="r4"><label for="r4">All AIs agree but no primary source exists</label></li>
+            <li class="check-item"><input type="checkbox" id="r5"><label for="r5">Claim sounds too perfect / too convenient</label></li>
+            <li class="check-item"><input type="checkbox" id="r6"><label for="r6">Source is a blog, forum, or social media only</label></li>
+            <li class="check-item"><input type="checkbox" id="r7"><label for="r7">Medical/legal/financial advice presented as fact</label></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>My Verification Log</h2>
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th style="width: 12%;">Date</th>
+                    <th style="width: 12%;">AI Tool</th>
+                    <th style="width: 20%;">Question</th>
+                    <th style="width: 20%;">Key Claim</th>
+                    <th style="width: 12%;">Verified?</th>
+                    <th style="width: 24%;">Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Asdale Dynamics, LLC — Free to copy and share for personal use.</p>
+    </footer>
+</body>
+</html>
